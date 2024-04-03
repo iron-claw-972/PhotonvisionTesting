@@ -2,6 +2,7 @@
 import websockets
 import asyncio
 import msgpack
+import sys
 
 
 # Constants for terminal colors
@@ -13,8 +14,6 @@ COLOR_END = '\033[0m'
 
 # TODO: Stop using a global variable
 photon_settings = {}
-
-
 
 def display_settings(settings: dict, camera_index: int):
     camera_name = settings["cameraSettings"][camera_index]["nickname"]
@@ -52,7 +51,7 @@ def display_settings(settings: dict, camera_index: int):
     print_setting("Video format index", camera_format_index)
 
 def print_setting(key: str, value: any):
-    print(TEXT_BOLD + f"{key}: {COLOR_YELLOW}{value}" + COLOR_END)
+    print(f"{key}: {TEXT_BOLD}{COLOR_YELLOW}{value}{COLOR_END}")
 
 def print_video_format(settings: dict, camera_index: int, format_index: int):
     video_format_list = settings["cameraSettings"][camera_index]["videoFormatList"]
@@ -82,7 +81,10 @@ async def listen(ip):
 
 
 
-ip_address = str(input("Enter device IP (no http:// or :5800): "))
+if len(sys.argv) > 1:
+    ip_address = sys.argv[1]
+else:
+    ip_address = str(input("Enter device IP (no http:// or :5800): "))
 
 asyncio.get_event_loop().run_until_complete(listen(ip_address))
 
