@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 import websockets
-import asyncio 
-import umsgpack
+import asyncio
 import msgpack
-import json
-import time
 
+# Constants for terminal colors
 TEXT_BOLD = '\033[1m'
 COLOR_BLUE = '\033[94m'
 COLOR_YELLOW = '\033[93m'
 COLOR_END = '\033[0m'
 
+
+# TODO: Stop using a global variable
 photon_settings = {}
+
 
 
 def display_settings(settings: dict, camera_index: int):
@@ -61,6 +62,8 @@ async def listen(ip):
 
             if i == 1:
                 photon_settings = unpacked
+
+
 
 
 ip_address = str(input("Enter device IP (no http:// or :5800): "))
