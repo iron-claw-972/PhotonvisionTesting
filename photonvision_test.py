@@ -15,11 +15,14 @@ COLOR_END = '\033[0m'
 # TODO: Stop using a global variable
 photon_settings = {}
 
+
+# Function to display settings
 def display_settings(settings: dict, camera_index: int):
     camera_name = settings["cameraSettings"][camera_index]["nickname"]
     
     pipeline_name = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["pipelineNickname"]
     camera_format_index = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["cameraVideoModeIndex"]
+
     doing_multi_target = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["doMultiTarget"]
     decision_margin = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["decisionMargin"]
     auto_exposure = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["cameraAutoExposure"]
@@ -61,15 +64,17 @@ def print_video_format(settings: dict, camera_index: int, format_index: int):
     fps = video_format_list[str(format_index)]["fps"]
     pixel_format = video_format_list[str(format_index)]["pixelFormat"]
 
-    print(f"{video_width} x {video_height} @ {fps}fps, {pixel_format}")
+    print(TEXT_BOLD + f"{video_width} x {video_height} @ {fps}fps, {pixel_format}" + COLOR_END)
 
+
+# Async function to get websocket data
 async def listen(ip):
     url = "ws://" + ip +":5800/websocket_data"
 
     async with websockets.connect(url) as ws:
         global photon_settings
         
-        for i in range(10):
+        for _ in range(10):
             
             msg = await ws.recv()
             unpacked = msgpack.unpackb(msg)
