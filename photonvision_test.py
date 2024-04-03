@@ -55,13 +55,14 @@ async def listen(ip):
     async with websockets.connect(url) as ws:
         global photon_settings
         
-        for i in range(2):
+        for i in range(10):
             
             msg = await ws.recv()
             unpacked = msgpack.unpackb(msg)
 
-            if i == 1:
-                photon_settings = unpacked
+            photon_settings = unpacked
+            if "settings" in photon_settings.keys():
+                break
 
 
 
