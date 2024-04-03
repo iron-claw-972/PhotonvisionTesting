@@ -1,0 +1,217 @@
+{
+    "settings": {
+        "networkSettings": {
+            "networkingDisabled": false,
+            "staticIp": "",
+            "runNTServer": false,
+            "shouldManage": false,
+            "ntServerAddress": "0",
+            "connectionType": 0,
+            "matchCamerasOnlyByPath": false,
+            "networkInterfaceNames": [],
+            "canManage": false,
+            "hostname": "photonvision",
+            "networkManagerIface": null,
+            "setDHCPcommand": "nmcli con mod ${interface} ipv4.method \"auto\" ipv6.method \"disabled\"",
+            "shouldPublishProto": false,
+            "setStaticCommand": "", 
+            "general": {
+                "gpuAcceleration": "", 
+                "hardwarePlatform": "Windows x64", 
+                "rknnSupported": false, 
+                "hardwareModel": "", 
+                "mrCalWorking": true, 
+                "version": "v2024.3.1"}, 
+                "atfl": {"tags": [{"ID": 1, "pose": {"translation": {"x": 15.079471999999997, "y": 0.24587199999999998, "z": 1.355852}, "rotation": {"quaternion": {"W": 0.5000000000000001, "X": 0.0, "Y": 0.0, "Z": 0.8660254037844386}}}}, {"ID": 2, "pose": {"translation": {"x": 16.185134, "y": 0.883666, "z": 1.355852}, "rotation": {"quaternion": {"W": 0.5000000000000001, "X": 0.0, "Y": 0.0, "Z": 0.8660254037844386}}}}, {"ID": 3, "pose": {"translation": {"x": 16.579342, "y": 4.982717999999999, "z": 1.4511020000000001}, "rotation": {"quaternion": {"W": 6.123233995736766e-17, "X": 0.0, "Y": 0.0, "Z": 1.0}}}}, {"ID": 4, "pose": {"translation": {"x": 16.579342, "y": 5.547867999999999, "z": 1.4511020000000001}, "rotation": {"quaternion": {"W": 6.123233995736766e-17, "X": 0.0, "Y": 0.0, "Z": 1.0}}}}, {"ID": 5, "pose": {"translation": {"x": 14.700757999999999, "y": 8.2042, "z": 1.355852}, "rotation": {"quaternion": {"W": -0.7071067811865475, "X": -0.0, "Y": 0.0, "Z": 0.7071067811865476}}}}, {"ID": 6, "pose": {"translation": {"x": 1.8415, "y": 8.2042, "z": 1.355852}, "rotation": {"quaternion": {"W": -0.7071067811865475, "X": -0.0, "Y": 0.0, "Z": 0.7071067811865476}}}}, {"ID": 7, "pose": {"translation": {"x": -0.038099999999999995, "y": 5.547867999999999, "z": 1.4511020000000001}, "rotation": {"quaternion": {"W": 1.0, "X": 0.0, "Y": 0.0, "Z": 0.0}}}}, {"ID": 8, "pose": {"translation": {"x": -0.038099999999999995, "y": 4.982717999999999, "z": 1.4511020000000001}, "rotation": {"quaternion": {"W": 1.0, "X": 0.0, "Y": 0.0, "Z": 0.0}}}}, {"ID": 9, "pose": {"translation": {"x": 0.356108, "y": 0.883666, "z": 1.355852}, "rotation": {"quaternion": {"W": 0.8660254037844387, "X": 0.0, "Y": 0.0, "Z": 0.49999999999999994}}}}, {"ID": 10, "pose": {"translation": {"x": 1.4615159999999998, "y": 0.24587199999999998, "z": 1.355852}, "rotation": {"quaternion": {"W": 0.8660254037844387, "X": 0.0, "Y": 0.0, "Z": 0.49999999999999994}}}}, {"ID": 11, "pose": {"translation": {"x": 11.904726, "y": 3.7132259999999997, "z": 1.3208}, "rotation": {"quaternion": {"W": -0.8660254037844387, "X": -0.0, "Y": 0.0, "Z": 0.49999999999999994}}}}, {"ID": 12, "pose": {"translation": {"x": 11.904726, "y": 4.49834, "z": 1.3208}, "rotation": {"quaternion": {"W": 0.8660254037844387, "X": 0.0, "Y": 0.0, "Z": 0.49999999999999994}}}}, {"ID": 13, "pose": {"translation": {"x": 11.220196, "y": 4.105148, "z": 1.3208}, "rotation": {"quaternion": {"W": 6.123233995736766e-17, "X": 0.0, "Y": 0.0, "Z": 1.0}}}}, {"ID": 14, "pose": {"translation": {"x": 5.320792, "y": 4.105148, "z": 1.3208}, "rotation": {"quaternion": {"W": 1.0, "X": 0.0, "Y": 0.0, "Z": 0.0}}}}, {"ID": 15, "pose": {"translation": {"x": 4.641342, "y": 4.49834, "z": 1.3208}, "rotation": {"quaternion": {"W": 0.5000000000000001, "X": 0.0, "Y": 0.0, "Z": 0.8660254037844386}}}}, {"ID": 16, "pose": {"translation": {"x": 4.641342, "y": 3.7132259999999997, "z": 1.3208}, "rotation": {"quaternion": {"W": -0.49999999999999983, "X": -0.0, "Y": 0.0, "Z": 0.8660254037844388}}}}], 
+                "field": {"length": 16.541, "width": 8.211}}, "lighting": {"brightness": 100, "supported": false}, 
+                "cameraSettings": [{"inputStreamPort": 1181, "currentPipelineIndex": 0, "outputStreamPort": 1182, "cameraQuirks": {"baseName": "Integrated Webcam", "usbVid": 7119, "usbPid": 10383, "displayName": "", "quirks": {"ArduOV2311": false, "AdjustableFocus": false, "CompletelyBroken": false, "ArduCamCamera": false, "ArduOV9281": false, "Gain": 
+            false,
+            "StickyFPS": false,
+            "PiCam": false,
+            "AWBGain": false,
+            "FPSCap100": false
+        }
+    },
+    "isFovConfigurable": true,
+    "fov": 70.0,
+    "currentPipelineSettings": {
+        "hammingDist": 0,
+        "contourGroupingMode": 0,
+        "cameraRedGain": -1,
+        "numIterations": 40,
+        "contourTargetOffsetPointEdge": 0,
+        "decimate": 1,
+        "contourArea": {
+            "first": 0.0,
+            "second": 100.0
+        },
+        "contourFullness": {
+            "first": 0.0,
+            "second": 100.0
+        },
+        "pipelineIndex": 0,
+        "contourSpecklePercentage": 5,
+        "targetModel": 5,
+        "cornerDetectionUseConvexHulls": true,
+        "outputShouldShow": true,
+        "hsvHue": {
+            "first": 50,
+            "second": 180
+        },
+        "hueInverted": false,
+        "contourSortMode": 0,
+        "cameraExposure": 18.7,
+        "cameraBrightness": 50,
+        "cornerDetectionAccuracyPercentage": 10.0,
+        "offsetRobotOffsetMode": 0,
+        "streamingFrameDivisor": 0,
+        "offsetDualPointBArea": 0.0,
+        "blur": 0.0,
+        "hsvValue": {
+            "first": 50,
+            "second": 255
+        },
+        "decisionMargin": 35,
+        "cameraGain": -1,
+        "cameraBlueGain": -1,
+        "cornerDetectionSideCount": 4,
+        "contourRatio": {
+            "first": 0.0,
+            "second": 20.0
+        },
+        "doMultiTarget": false,
+        "pipelineNickname": "New Pipeline",
+        "refineEdges": true,
+        "inputImageRotationMode": 0,
+        "solvePNPEnabled": false,
+        "inputShouldShow": false,
+        "debug": false,
+        "cameraAutoExposure": false,
+        "doSingleTargetAlways": false,
+        "contourTargetOrientation": 1,
+        "outputShouldDraw": true,
+        "threads": 4,
+        "offsetDualPointA": {
+            "x": 0.0,
+            "y": 0.0
+        },
+        "offsetDualPointB": {
+            "x": 0.0,
+            "y": 0.0
+        },
+        "tagFamily": 2,
+        "ledMode": false,
+        "outputShowMultipleTargets": true,
+        "offsetSinglePoint": {
+            "x": 0.0,
+            "y": 0.0
+        },
+        "offsetDualPointAArea": 0.0,
+        "cornerDetectionExactSideCount": false,
+        "cameraVideoModeIndex": 0,
+        "cornerDetectionStrategy": 0,
+        "hsvSaturation": {
+            "first": 50,
+            "second": 255
+        },
+        "pipelineType": 4,
+        "contourIntersection": 1
+    },
+    "isCSICamera": false,
+    "calibrations": [],
+    "uniqueName": "Integrated_Webcam",
+    "videoFormatList": {
+        "0": {
+            "pixelFormat": "YUYV",
+            "width": 160,
+            "fps": 15,
+            "height": 120
+        },
+        "1": {
+            "pixelFormat": "YUYV",
+            "width": 160,
+            "fps": 30,
+            "height": 120
+        },
+        "2": {
+            "pixelFormat": "YUYV",
+            "width": 176,
+            "fps": 15,
+            "height": 144
+        },
+        "3": {
+            "pixelFormat": "YUYV",
+            "width": 176,
+            "fps": 30,
+            "height": 144
+        },
+        "4": {
+            "pixelFormat": "YUYV",
+            "width": 320,
+            "fps": 15,
+            "height": 240
+        },
+        "5": {
+            "pixelFormat": "YUYV",
+            "width": 320,
+            "fps": 30,
+            "height": 240
+        },
+        "6": {
+            "pixelFormat": "YUYV",
+            "width": 352,
+            "fps": 15,
+            "height": 288
+        },
+        "7": {
+            "pixelFormat": "YUYV",
+            "width": 352,
+            "fps": 30,
+            "height": 288
+        },
+        "8": {
+            "pixelFormat": "YUYV",
+            "width": 640,
+            "fps": 15,
+            "height": 480
+        },
+        "9": {
+            "pixelFormat": "YUYV",
+            "width": 640,
+            "fps": 30,
+            "height": 480
+        },
+        "10": {
+            "pixelFormat": "MJPEG",
+            "width": 1280,
+            "fps": 15,
+            "height": 720
+        },
+        "11": {
+            "pixelFormat": "MJPEG",
+            "width": 1280,
+            "fps": 30,
+            "height": 720
+        },
+        "12": {
+            "pixelFormat": "YUYV",
+            "width": 1280,
+            "fps": 8,
+            "height": 720
+        },
+        "13": {
+            "pixelFormat": "YUYV",
+            "width": 1280,
+            "fps": 10,
+            "height": 720
+        },
+        "14": {
+            "pixelFormat": "YUYV",
+            "width": 1280,
+            "fps": 10,
+            "height": 1024
+        }
+    },
+    "pipelineNicknames": ["New Pipeline"],
+    "nickname": "Camera2"
+}
