@@ -51,7 +51,6 @@ def display_settings(settings: dict, camera_index: int):
     print_setting("Threads", threads)
     print_setting("Refine Edges", refine_edges)
     print_setting("Pose Estimation Iterations", pose_estimation_iterations)
-    print_setting("Video format index", camera_format_index)
 
 def print_setting(key: str, value: any):
     print(f"{key}: {TEXT_BOLD}{COLOR_YELLOW}{value}{COLOR_END}")
