@@ -3,6 +3,7 @@ import websockets
 import asyncio
 import msgpack
 
+
 # Constants for terminal colors
 TEXT_BOLD = '\033[1m'
 COLOR_BLUE = '\033[94m'
@@ -16,6 +17,8 @@ photon_settings = {}
 
 
 def display_settings(settings: dict, camera_index: int):
+    with open("test.txt", "w") as f:
+        f.write(str(settings))
     camera_name = settings["cameraSettings"][camera_index]["nickname"]
 
     pipeline_name = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["pipelineNickname"]
