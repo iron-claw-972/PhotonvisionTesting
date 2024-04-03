@@ -17,11 +17,10 @@ photon_settings = {}
 
 
 def display_settings(settings: dict, camera_index: int):
-    with open("test.txt", "w") as f:
-        f.write(str(settings))
     camera_name = settings["cameraSettings"][camera_index]["nickname"]
-
+    
     pipeline_name = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["pipelineNickname"]
+    camera_format_index = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["cameraVideoModeIndex"]
     doing_multi_target = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["doMultiTarget"]
     decision_margin = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["decisionMargin"]
     auto_exposure = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["cameraAutoExposure"]
@@ -37,6 +36,9 @@ def display_settings(settings: dict, camera_index: int):
     print(f"{'*' * 30} {TEXT_BOLD}Settings for {COLOR_BLUE}{camera_name}{COLOR_END}: {'*' * 30}")
 
     print_setting("Pipeline Name", pipeline_name)
+
+    print_video_format(settings, camera_index, camera_format_index)
+
     print_setting("Doing Multi-Target", doing_multi_target)
     print_setting("Decision margin", decision_margin)
     print_setting("Auto Exposure", auto_exposure)
@@ -47,10 +49,20 @@ def display_settings(settings: dict, camera_index: int):
     print_setting("Threads", threads)
     print_setting("Refine Edges", refine_edges)
     print_setting("Pose Estimation Iterations", pose_estimation_iterations)
+    print_setting("Video format index", camera_format_index)
 
 def print_setting(key: str, value: any):
     print(TEXT_BOLD + f"{key}: {COLOR_YELLOW}{value}" + COLOR_END)
 
+def print_video_format(settings: dict, camera_index: int, format_index: int):
+    video_format_list = settings["cameraSettings"][camera_index]["videoFormatList"]
+    
+    video_width = video_format_list[str(format_index)]["width"]
+    video_height = video_format_list[str(format_index)]["height"]
+    fps = video_format_list[str(format_index)]["fps"]
+    pixel_format = video_format_list[str(format_index)]["pixelFormat"]
+
+    print(f"{video_width} x {video_height} @ {fps}fps, {pixel_format}")
 
 async def listen(ip):
     url = "ws://" + ip +":5800/websocket_data"
