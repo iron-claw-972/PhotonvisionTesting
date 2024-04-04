@@ -24,9 +24,9 @@ expected_settings = None
 def display_settings(settings: dict, camera_index: int):
     global expected_settings
     camera_name = settings["cameraSettings"][camera_index]["nickname"]
-    if "port" in camera_name:
+    if "port" in camera_name.lower():
         settings_file = open("expected-port.json")
-    elif "starboard" in camera_name:
+    elif "starboard" in camera_name.lower():
         settings_file = open("expected-starboard.json")
     else:
         print("Unexpected Camera Name " + camera_name)
@@ -92,7 +92,7 @@ async def listen(ip):
     async with websockets.connect(url) as ws:
         global photon_settings
         
-        for _ in range(10):
+        for i in range(maxattempts := 10):
             
             msg = await ws.recv()
             unpacked = msgpack.unpackb(msg)
@@ -100,6 +100,8 @@ async def listen(ip):
             photon_settings = unpacked
             if "settings" in photon_settings.keys():
                 break
+            elif i == maxattempts-1:
+                raise Exception(f"No settings were found after {i} iterations.")
 
 
 
