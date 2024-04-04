@@ -1,0 +1,15 @@
+{
+	"Pipeline Name": "New Pipeline",
+	"Target Resolution": "blah blah",
+	"Doing Multi-Target": false,
+	"Decision margin": 35,
+	"Auto Exposure": false,
+	"Camera exposure": 20.0,
+	"Camera Brightness": 500,
+	"Decimate": 0.1,
+	"Blur": 1,
+	"Threads": 4,
+	"Refine Edges": true,
+	"Pose Estimation Iterations": 40,
+	"Video format index": 0
+}

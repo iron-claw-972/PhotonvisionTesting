@@ -2,6 +2,7 @@
 import websockets
 import asyncio
 import msgpack
+import json
 import sys
 
 
@@ -9,11 +10,15 @@ import sys
 TEXT_BOLD = '\033[1m'
 COLOR_BLUE = '\033[94m'
 COLOR_YELLOW = '\033[93m'
+COLOR_OK = TEXT_BOLD + '\033[32m'
+COLOR_BAD = TEXT_BOLD + '\033[31m'
 COLOR_END = '\033[0m'
 
 
 # TODO: Stop using a global variable
 photon_settings = {}
+with open("expected.json") as f:
+    expected_settings = json.load(f)
 
 
 # Function to display settings
@@ -37,24 +42,27 @@ def display_settings(settings: dict, camera_index: int):
 
     print(f"{'*' * 30} {TEXT_BOLD}Settings for {COLOR_BLUE}{camera_name}{COLOR_END}: {'*' * 30}")
 
-    print_setting("Pipeline Name", pipeline_name)
+    check_and_print_setting("Pipeline Name", pipeline_name)
 
     print_video_format(settings, camera_index, camera_format_index)
 
-    print_setting("Doing Multi-Target", doing_multi_target)
-    print_setting("Decision margin", decision_margin)
-    print_setting("Auto Exposure", auto_exposure)
-    print_setting("Camera exposure", camera_exposure)
-    print_setting("Camera Brightness", camera_brightness)
-    print_setting("Decimate", decimate)
-    print_setting("Blur", blur)
-    print_setting("Threads", threads)
-    print_setting("Refine Edges", refine_edges)
-    print_setting("Pose Estimation Iterations", pose_estimation_iterations)
-    print_setting("Video format index", camera_format_index)
+    check_and_print_setting("Doing Multi-Target", doing_multi_target)
+    check_and_print_setting("Decision margin", decision_margin)
+    check_and_print_setting("Auto Exposure", auto_exposure)
+    check_and_print_setting("Camera exposure", camera_exposure)
+    check_and_print_setting("Camera Brightness", camera_brightness)
+    check_and_print_setting("Decimate", decimate)
+    check_and_print_setting("Blur", blur)
+    check_and_print_setting("Threads", threads)
+    check_and_print_setting("Refine Edges", refine_edges)
+    check_and_print_setting("Pose Estimation Iterations", pose_estimation_iterations)
+    check_and_print_setting("Video format index", camera_format_index)
 
-def print_setting(key: str, value: any):
-    print(f"{key}: {TEXT_BOLD}{COLOR_YELLOW}{value}{COLOR_END}")
+def check_and_print_setting(key: str, value: any):
+    if value == expected_settings[key]:
+        print(f"{key}: {COLOR_OK}{value}{COLOR_END}")
+    else:
+        print(f"{key}: {COLOR_BAD}{value}{COLOR_END} (expected: {expected_settings[key]})")
 
 def print_video_format(settings: dict, camera_index: int, format_index: int):
     video_format_list = settings["cameraSettings"][camera_index]["videoFormatList"]
@@ -64,7 +72,8 @@ def print_video_format(settings: dict, camera_index: int, format_index: int):
     fps = video_format_list[str(format_index)]["fps"]
     pixel_format = video_format_list[str(format_index)]["pixelFormat"]
 
-    print(TEXT_BOLD + f"{video_width} x {video_height} @ {fps}fps, {pixel_format}" + COLOR_END)
+    formatted = f"{video_width} x {video_height} @ {fps}fps, {pixel_format}"
+    check_and_print_setting("Target Resolution", formatted)
 
 
 # Async function to get websocket data
