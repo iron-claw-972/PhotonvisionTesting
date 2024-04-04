@@ -119,7 +119,7 @@ else:
     subprocess.run([sys.executable, __file__, "10.9.72.12"])
     exit(0)
 
-asyncio.get_event_loop().run_until_complete(listen(ip_address))
+asyncio.run(listen(ip_address))
 
 
 print(f"{'*' * 50} {TEXT_BOLD}Photonvision settings check{COLOR_END} {'*' * 50}")
