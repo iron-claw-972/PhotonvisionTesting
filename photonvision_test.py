@@ -121,7 +121,7 @@ asyncio.get_event_loop().run_until_complete(listen(ip_address))
 print(f"{'*' * 50} {TEXT_BOLD}Photonvision settings check{COLOR_END} {'*' * 50}")
 
 print("IP: " + COLOR_BLUE + TEXT_BOLD + ip_address + COLOR_END)
-print("Hostname: " + COLOR_BLUE + TEXT_BOLD + photon_settings["settings"]["networkSettings"]["hostname"] + COLOR_END)
+#print("Hostname: " + COLOR_BLUE + TEXT_BOLD + photon_settings["settings"]["networkSettings"]["hostname"] + COLOR_END)
 
 
 if photon_settings["cameraSettings"][0] != None:
