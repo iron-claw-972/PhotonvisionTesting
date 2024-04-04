@@ -49,6 +49,7 @@ def display_settings(settings: dict, camera_index: int):
     blur = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["decimate"]
     refine_edges = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["refineEdges"]
     pose_estimation_iterations = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["numIterations"]
+    tag_family = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["tagFamily"]
 
 
     print(f"{'*' * 30} {TEXT_BOLD}Settings for {COLOR_BLUE}{camera_name}{COLOR_END}: {'*' * 30}")
@@ -67,6 +68,9 @@ def display_settings(settings: dict, camera_index: int):
     check_and_print_setting("Threads", threads)
     check_and_print_setting("Refine Edges", refine_edges)
     check_and_print_setting("Pose Estimation Iterations", pose_estimation_iterations)
+    check_and_print_setting("Tag Family", tag_family)
+    print("0 = 36h11")
+    
 
 def check_and_print_setting(key: str, value: any):
     if value == expected_settings[key]:
@@ -122,6 +126,7 @@ print(f"{'*' * 50} {TEXT_BOLD}Photonvision settings check{COLOR_END} {'*' * 50}"
 
 print("IP: " + COLOR_BLUE + TEXT_BOLD + ip_address + COLOR_END)
 #print("Hostname: " + COLOR_BLUE + TEXT_BOLD + photon_settings["settings"]["networkSettings"]["hostname"] + COLOR_END)
+
 
 
 if photon_settings["cameraSettings"][0] != None:
