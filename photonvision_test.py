@@ -17,13 +17,23 @@ COLOR_END = '\033[0m'
 
 # TODO: Stop using a global variable
 photon_settings = {}
-with open("expected.json") as f:
-    expected_settings = json.load(f)
+expected_settings = None
 
 
 # Function to display settings
 def display_settings(settings: dict, camera_index: int):
+    global expected_settings
     camera_name = settings["cameraSettings"][camera_index]["nickname"]
+    if "port" in camera_name:
+        settings_file = open("expected-port.json")
+    elif "starboard" in camera_name:
+        settings_file = open("expected-starboard.json")
+    else:
+        print("Unexpected Camera Name " + camera_name)
+        settings_file = open("expected-port.json")
+
+    expected_settings = json.load(settings_file)
+    settings_file.close()
     
     pipeline_name = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["pipelineNickname"]
     camera_format_index = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["cameraVideoModeIndex"]
