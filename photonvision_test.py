@@ -113,6 +113,7 @@ else:
     #ip_address = str(input("Enter device IP (no http:// or :5800): "))
     subprocess.run([sys.executable, __file__, "10.9.72.11"])
     subprocess.run([sys.executable, __file__, "10.9.72.12"])
+    exit(0)
 
 asyncio.get_event_loop().run_until_complete(listen(ip_address))
 
