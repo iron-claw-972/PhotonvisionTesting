@@ -68,15 +68,15 @@ def display_settings(settings: dict, camera_index: int):
     check_and_print_setting("Threads", threads)
     check_and_print_setting("Refine Edges", refine_edges)
     check_and_print_setting("Pose Estimation Iterations", pose_estimation_iterations)
-    check_and_print_setting("Tag Family", tag_family)
-    print("0 = 36h11")
+    check_and_print_setting("Tag Family", tag_family, "(0 = 36h11)")
     
 
-def check_and_print_setting(key: str, value: any):
+def check_and_print_setting(key: str, value: any, and_then: str = ""):
     if value == expected_settings[key]:
-        print(f"{key}: {COLOR_OK}{value}{COLOR_END}")
+        print(f"{key}: {COLOR_OK}{value}{COLOR_END}", end="")
     else:
-        print(f"{key}: {COLOR_BAD}{value}{COLOR_END} (expected: {expected_settings[key]})")
+        print(f"{key}: {COLOR_BAD}{value}{COLOR_END} (expected: {expected_settings[key]})", end="")
+    print(f" {and_then}")
 
 def print_video_format(settings: dict, camera_index: int, format_index: int):
     video_format_list = settings["cameraSettings"][camera_index]["videoFormatList"]
