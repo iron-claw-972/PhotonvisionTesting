@@ -67,6 +67,9 @@ def display_settings(settings: dict, camera_index: int):
     check_and_print_setting("Threads", threads)
     check_and_print_setting("Refine Edges", refine_edges)
     check_and_print_setting("Pose Estimation Iterations", pose_estimation_iterations)
+    check_and_print_setting("Tag Family", tag_family)
+    print("0 = 36h11")
+    
 
 def check_and_print_setting(key: str, value: any):
     if value == expected_settings[key]:

@@ -11,5 +11,6 @@
 	"Threads": 4,
 	"Refine Edges": true,
 	"Pose Estimation Iterations": 40,
-	"Video format index": 0
+	"Video format index": 0,
+	"Tag Family": 0
 }
