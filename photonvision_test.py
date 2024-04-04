@@ -2,6 +2,7 @@
 import websockets
 import asyncio
 import msgpack
+import subprocess
 import json
 import sys
 
@@ -109,14 +110,17 @@ async def listen(ip):
 if len(sys.argv) > 1:
     ip_address = sys.argv[1]
 else:
-    ip_address = str(input("Enter device IP (no http:// or :5800): "))
+    #ip_address = str(input("Enter device IP (no http:// or :5800): "))
+    subprocess.run([sys.executable, __file__, "10.9.72.11"])
+    subprocess.run([sys.executable, __file__, "10.9.72.12"])
 
 asyncio.get_event_loop().run_until_complete(listen(ip_address))
 
 
 print(f"{'*' * 50} {TEXT_BOLD}Photonvision settings check{COLOR_END} {'*' * 50}")
 
-print(COLOR_BLUE + "Hostname: " + photon_settings["settings"]["networkSettings"]["hostname"] + COLOR_END)
+print("IP: " + COLOR_BLUE + TEXT_BOLD + ip_address + COLOR_END)
+print("Hostname: " + COLOR_BLUE + TEXT_BOLD + photon_settings["settings"]["networkSettings"]["hostname"] + COLOR_END)
 
 
 if photon_settings["cameraSettings"][0] != None:
