@@ -5,6 +5,8 @@ import msgpack
 import subprocess
 import json
 import sys
+import shutil
+import re
 
 
 # Constants for terminal colors
@@ -19,6 +21,16 @@ COLOR_END = '\033[0m'
 # TODO: Stop using a global variable
 photon_settings = {}
 expected_settings = None
+
+CTRL_CODES = re.compile("\033\\[.*?m")
+
+
+def print_line(line: str) -> None:
+    line_len: int = len(re.sub(CTRL_CODES, '', line))
+    term_width: int = shutil.get_terminal_size()[0]
+    excl_str: int = term_width - line_len - 2
+    is_odd: int = excl_str % 2
+    print('*' * (excl_str // 2 + is_odd), line, '*' * (excl_str // 2))
 
 
 # Function to display settings
@@ -35,6 +47,8 @@ def display_settings(settings: dict, camera_index: int):
 
     expected_settings = json.load(settings_file)
     settings_file.close()
+
+    # print(json.dumps(settings, indent=4))
     
     pipeline_name = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["pipelineNickname"]
     camera_format_index = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["cameraVideoModeIndex"]
@@ -42,7 +56,7 @@ def display_settings(settings: dict, camera_index: int):
     doing_multi_target = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["doMultiTarget"]
     decision_margin = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["decisionMargin"]
     auto_exposure = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["cameraAutoExposure"]
-    camera_exposure = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["cameraExposure"]
+    camera_exposure = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["cameraExposureRaw"]
     camera_brightness = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["cameraBrightness"]
     threads = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["threads"]
     decimate = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["decimate"]
@@ -52,7 +66,7 @@ def display_settings(settings: dict, camera_index: int):
     tag_family = settings["cameraSettings"][camera_index]["currentPipelineSettings"]["tagFamily"]
 
 
-    print(f"{'*' * 30} {TEXT_BOLD}Settings for {COLOR_BLUE}{camera_name}{COLOR_END}: {'*' * 30}")
+    print_line(f"{TEXT_BOLD}Settings for {COLOR_BLUE}{camera_name}{COLOR_END}:")
 
     check_and_print_setting("Pipeline Name", pipeline_name)
 
@@ -122,14 +136,16 @@ else:
 asyncio.run(listen(ip_address))
 
 
-print(f"{'*' * 50} {TEXT_BOLD}Photonvision settings check{COLOR_END} {'*' * 50}")
+print_line(f"{TEXT_BOLD}Photonvision settings check{COLOR_END}")
 
 print("IP: " + COLOR_BLUE + TEXT_BOLD + ip_address + COLOR_END)
 #print("Hostname: " + COLOR_BLUE + TEXT_BOLD + photon_settings["settings"]["networkSettings"]["hostname"] + COLOR_END)
 
+if len(photon_settings["cameraSettings"]) == 0:
+    print(COLOR_BAD + "Photonvision has no configured cameras. Exiting." + COLOR_END)
+    exit(1)
 
-
-if photon_settings["cameraSettings"][0] != None:
+elif photon_settings["cameraSettings"][0] != None:
     display_settings(photon_settings, 0)
 
 elif photon_settings["cameraSettings"][1] != None:
