@@ -37,16 +37,9 @@ def print_line(line: str) -> None:
 def display_settings(settings: dict, camera_index: int):
     global expected_settings
     camera_name = settings["cameraSettings"][camera_index]["nickname"]
-    if "port" in camera_name.lower():
-        settings_file = open("expected-port.json")
-    elif "starboard" in camera_name.lower():
-        settings_file = open("expected-starboard.json")
-    else:
-        print("Unexpected Camera Name " + camera_name)
-        settings_file = open("expected-port.json")
 
-    expected_settings = json.load(settings_file)
-    settings_file.close()
+    with open("expected.json") as settings_file:
+        expected_settings = json.load(settings_file)
 
     # print(json.dumps(settings, indent=4))
     
@@ -129,7 +122,6 @@ if len(sys.argv) > 1:
     ip_address = sys.argv[1]
 else:
     #ip_address = str(input("Enter device IP (no http:// or :5800): "))
-    subprocess.run([sys.executable, __file__, "10.9.72.11"])
     subprocess.run([sys.executable, __file__, "10.9.72.12"])
     exit(0)
 
