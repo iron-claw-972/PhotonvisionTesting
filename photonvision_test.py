@@ -7,6 +7,7 @@ import json
 import sys
 import shutil
 import re
+from typing import Any
 
 
 # Constants for terminal colors
@@ -78,7 +79,7 @@ def display_settings(settings: dict, camera_index: int):
     check_and_print_setting("Tag Family", tag_family, "(0 = 36h11)")
     
 
-def check_and_print_setting(key: str, value: any, and_then: str = ""):
+def check_and_print_setting(key: str, value: Any, and_then: str = ""):
     if value == expected_settings[key]:
         print(f"{key}: {COLOR_OK}{value}{COLOR_END}", end="")
     else:
