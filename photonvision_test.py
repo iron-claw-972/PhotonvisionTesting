@@ -38,12 +38,13 @@ def print_line(line: str) -> None:
 def display_settings(settings: dict, camera_index: int):
     global expected_settings
     camera_name = settings["cameraSettings"][camera_index]["nickname"]
-    if "front" in camera_name.lower():
+    if camera_name.lower() == "CameraFront":
         settings_file = open("expected-front.json")
-    elif "back" in camera_name.lower():
+    elif camera_name.lower() == "CameraBack":
         settings_file = open("expected-back.json")
     else:
-        print("Unexpected Camera Name " + camera_name)
+        print("Unexpected Camera Name " + camera_name +
+              " (expected either CameraFront or CameraBack)")
         settings_file = open("expected-front.json")
 
     expected_settings = json.load(settings_file)
