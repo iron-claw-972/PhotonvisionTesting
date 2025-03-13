@@ -1,6 +1,6 @@
 {
 	"Pipeline Name": "New Pipeline",
-	"Target Resolution": "1280 x 720 @ 120fps, MJPEG",
+	"Target Resolution": "1280 x 720 @ 60fps, MJPEG",
 	"Doing Multi-Target": true,
 	"Decision margin": 30,
 	"Auto Exposure": false,

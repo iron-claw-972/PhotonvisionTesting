@@ -1,0 +1,16 @@
+{
+	"Pipeline Name": "New Pipeline",
+	"Target Resolution": "1280 x 720 @ 60fps, MJPEG",
+	"Doing Multi-Target": true,
+	"Decision margin": 30,
+	"Auto Exposure": false,
+	"Camera exposure": 17.0,
+	"Camera Brightness": 30,
+	"Decimate": 1,
+	"Blur": 1,
+	"Threads": 4,
+	"Refine Edges": true,
+	"Pose Estimation Iterations": 40,
+	"Video format index": 0,
+	"Tag Family": 0
+}
